@@ -63,16 +63,17 @@
 								<div class="form-group">
 									<div class="d-flex align-items-center small">
 										<i class="fa fa-user fa-fw text-muted position-absolute pl-3"></i>
-										<input type="text" class="form-control py-4"
+										<input id="username" type="text" class="form-control py-4"
 											placeholder="Email" style="padding-left: 38px;" />
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="d-flex align-items-center small">
 										<i class="fa fa-key fa-fw text-muted position-absolute pl-3"></i>
-										<input type="text" class="form-control py-4"
+										<input id="password" type="password" class="form-control py-4"
 											placeholder="Password" style="padding-left: 38px;" />
 									</div>
+									<span id="checkLogin" class="text-danger"></span>		
 								</div>
 								<div class="form-group">
 									<a href="register.html"
@@ -85,7 +86,7 @@
 						</div>
 						<div class="modal-footer">
 
-							<a href="menu.html" class="btn btn-dark btn-block">Login</a>
+							<a  id="btn-login" class="btn btn-dark btn-block">Login</a>
 						</div>
 					</div>
 				</div>
@@ -107,8 +108,9 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-
+	<script src="sweetalert2.all.min.js"></script>
 	<script src="<c:url value="/resource/script/test.js" />"></script>
+	<script src="<c:url value="/resource/script/login.js" />"></script>
 	
 </body>
 </html>

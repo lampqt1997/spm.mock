@@ -8,9 +8,11 @@ import spm.mock.group4.entity.custom.GroupStudentCustom;
 
 public interface IProfessor {
 	
-	List<GroupStudent> listRegisterGroup(int id_professor);
-	List<GroupStudent> listNotRegisterGroup(int id_professor);
 	float totalAvg(int id_group);
 	List<Student> listStudentByIdGroup(int id_group);
 	List<GroupStudentCustom> customsById(int id_professor);
+	List<GroupStudentCustom> customsAnotherById(int id_professor);
+	int countProfessor();
+	int countGroup();
+	int countGroupRegistered();
 }

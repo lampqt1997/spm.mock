@@ -20,33 +20,44 @@ public class ProfessorService implements IProfessor {
 	
 	@Override
 	@Transactional
-	public List<GroupStudent> listRegisterGroup(int id_professor) {
-		return professorDao.listRegisterGroup(id_professor);
-	}
-
-	@Override
-	@Transactional
-	public List<GroupStudent> listNotRegisterGroup(int id_professor) {
-		return professorDao.listNotRegisterGroup(id_professor);
-	}
-
-	@Override
 	public float totalAvg(int id_group) {
-		
 		return professorDao.totalAvg(id_group);
 	}
 
 	@Override
+	@Transactional
 	public List<Student> listStudentByIdGroup(int id_group) {
-		// TODO Auto-generated method stub
 		return professorDao.listStudentByIdGroup(id_group);
 	}
 
 	@Override
 	@Transactional
 	public List<GroupStudentCustom> customsById(int id_professor) {
-		
 		return professorDao.customsById(id_professor);
+	}
+
+	@Override
+	@Transactional
+	public List<GroupStudentCustom> customsAnotherById(int id_professor) {
+		return professorDao.customsAnotherById(id_professor);
+	}
+
+	@Override
+	@Transactional
+	public int countProfessor() {
+		return professorDao.countProfessor();
+	}
+
+	@Override
+	@Transactional
+	public int countGroup() {
+		return professorDao.countGroup();
+	}
+
+	@Override
+	@Transactional
+	public int countGroupRegistered() {
+		return professorDao.countGroupRegistered();
 	}
 
 }

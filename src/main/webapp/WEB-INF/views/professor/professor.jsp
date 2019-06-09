@@ -131,16 +131,22 @@
 							<div class="card border-dark mb-3 h-100 ">
 								<div class="card-body text-dark h-100">
 									<p class="">
-										<span class="card-text">Số lượng nhóm đã tạo: </span> <span
-											class="text-info float-right">10</span>
+										<span class="card-text">Số lượng nhóm đã tạo: </span> 
+										<span class="text-info float-right">
+											<c:out value="${countGroup }"></c:out>
+										</span>
 									</p>
 									<p class="">
-										<span class="card-text">Số lượng nhóm đăng ký: </span> <span
-											class="text-info float-right">10</span>
+										<span class="card-text">Số lượng nhóm đăng ký: </span> 
+										<span class="text-info float-right">
+											<c:out value="${countGroupRegister }"></c:out>
+										</span>
 									</p>
 									<p class="">
-										<span class="card-text">Số lượng Giáo sư: </span> <span
-											class="text-info float-right">10</span>
+										<span class="card-text">Số lượng Giáo sư: </span> 
+										<span class="text-info float-right">
+											<c:out value="${countProfessor }"></c:out>
+										</span>
 									</p>
 
 
@@ -179,11 +185,14 @@
 												</tr>
 											</thead>
 											<tbody>
+											<%
+											int j = 1;
+											%>
 												<c:forEach items="${groups }" var="g">
-												<c:set scope="session" var="i" value="0"  />
- 
 												<tr>
-													<td><c:out value="${i}"></c:out></td>
+													<td>
+													<%=j++ %>
+													</td>
 													<td><a href='<c:out value="${g.id }"></c:out>' class="btn btn-link text-info">
 															<c:out value="${ g.getLeader()}"></c:out>
 														</a>
@@ -197,39 +206,6 @@
 															class="fa fa-times"></i>
 													</a></td>
 												</tr>
-												<!-- <tr>
-													<td>1</td>
-													<td><a href="" class="btn btn-link text-info">
-															Pham Quoc Thach Lam </a></td>
-													<td>7.0</td>
-													<td><a href="" class="btn text-success" title="Đồng ý">
-															<i class="fa fa-check"></i>
-													</a> <a href="" class="btn text-danger" title="Từ chối"> <i
-															class="fa fa-times"></i>
-													</a></td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td><a href="" class="btn btn-link text-info"> Vo
-															Van Tri </a></td>
-													<td>6.5</td>
-													<td><a href="" class="btn text-success" title="Đồng ý">
-															<i class="fa fa-check"></i>
-													</a> <a href="" class="btn text-danger" title="Từ chối"> <i
-															class="fa fa-times"></i>
-													</a></td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td><a href="" class="btn btn-link text-info">
-															Pham Hoang Linh </a></td>
-													<td>9.0</td>
-													<td><a href="" class="btn text-success" title="Đồng ý">
-															<i class="fa fa-check"></i>
-													</a> <a href="" class="btn text-danger" title="Từ chối"> <i
-															class="fa fa-times"></i>
-													</a></td>
-												</tr> -->
 												</c:forEach>
 											</tbody>
 										</table>
@@ -267,36 +243,26 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach items="${gr1 }" var="g">
-												<c:set scope="session" var="i" value="0"  />
- 
+											<%
+											int i=1;
+											%>
+											<c:forEach items="${groupsAnother }" var="g2">
 												<tr>
-													<td><c:out value="${i}"></c:out></td>
-													<td><a href="" class="btn btn-link text-info">
-															<c:out value="${ g.getLeader()}"></c:out>
+													<td>
+													<%=i++ %>
+													</td>
+													<td><a href='<c:out value="${g2.id }"></c:out>' class="btn btn-link text-info">
+															<c:out value="${ g2.getLeader()}"></c:out>
 														</a>
 													</td>
-													<td>7.0</td>
-													<td>Giáo sư A</td>
-
+													<td>
+														<c:out value="${g2.getGrade() }"></c:out>
+													</td>
+													<td>
+														<c:out value="${g2.getProfessor() }"></c:out>
+													</td>
 												</tr>
-												<!-- <tr>
-													<td>2</td>
-													<td><a href="" class="btn btn-link text-info"> Vo
-															Van Tri </a></td>
-													<td>6.5</td>
-													<td>Giáo sư B</td>
 
-												</tr>
-												<tr>
-													<td>3</td>
-													<td><a href="" class="btn btn-link text-info">
-															Pham Hoang Linh </a></td>
-													<td>9.0</td>
-													<td>Giáo sư A</td>
-
-												</tr> -->
-												
 											</c:forEach>
 												
 											</tbody>

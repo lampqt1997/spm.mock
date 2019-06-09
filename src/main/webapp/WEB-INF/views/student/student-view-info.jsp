@@ -1,5 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="spm.mock.group4.entity.Student"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +16,10 @@
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="create_group.css">
-<link rel="stylesheet" type="text/css" href="create_group.css">
 </head>
 <body class="bg-light h-100">
 	<div class="header border-bottom">
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-white">
 			<a class="navbar-brand" href="home.html">SPM</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -35,8 +38,10 @@
 						href="#">Search <span class="sr-only">(current)</span></a></li>
 
 				</ul>
-				<button class="btn btn-dark my-2 my-sm-0" type="submit">Hi,
-					Tony</button>
+				<button class="btn btn-dark my-2 my-sm-0" type="submit">
+					Hi,
+					<c:out value="${student.getSname()}"></c:out>
+				</button>
 
 			</div>
 		</nav>
@@ -125,16 +130,17 @@
 												</div>
 												<div class="float-left offset-1">
 													<ul class="list-unstyled">
-														<li class="h4">Tony</li>
+														<li class="h4"><c:out value="${student.getSname()}"></c:out></li>
 														<li class="h5 font-italic">Student</li>
 														<li></li>
 													</ul>
 												</div>
 											</div>
-											<div class="float-right h4">
-												<a href="" class="btn btn-ouline-info text-info"> <i
-													class="fa fa-cog"></i> Edit
-												</a>
+											<div id="editSaveCancel-place" class="float-right h4">
+												<button id="btn-edit" href=""
+													class="btn btn-ouline-info text-info">
+													<i class="fa fa-cog"></i> Edit
+												</button>
 											</div>
 										</div>
 									</div>
@@ -144,49 +150,60 @@
 										code</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="inputstcode3"
-											placeholder="15130084" readonly>
+											readonly
+											value="<c:out value="${student.getStudent_code()}"></c:out>">
 									</div>
 								</div>
 								<div class="form-group row ">
-									<label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+									<label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
 									<div class="col-sm-10">
-										<input type="email" class="form-control" id="inputEmail3"
-											placeholder="ussera@gmail.com" readonly>
+										<input type="email" class="form-control" id="inputEmail"
+											placeholder="ussera@gmail.com" readonly
+											value="<c:out value="${student.getUser().getUserDetail().getEmail()}"></c:out>">
+									</div>
+								</div>
+								<div id="password-place" class="form-group row"></div>
+								<div class="form-group row">
+									<label for="inputAddress" class="col-sm-2 form-control-label">Address</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputAddress"
+											placeholder="Linh Trung, Thu Duc, Ho Chi Minh" readonly
+											value="<c:out value="${student.getUser().getUserDetail().getAddress()}"></c:out>">
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="inputPassword3" class="col-sm-2 form-control-label">Address</label>
+									<label for="inputPhone" class="col-sm-2 form-control-label">Phone</label>
 									<div class="col-sm-10">
-										<input type="password" class="form-control"
-											id="inputPassword3"
-											placeholder="Linh Trung, Thu Duc, Ho Chi Minh" readonly>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="inputPassword3" class="col-sm-2 form-control-label">Phone</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control"
-											id="inputPassword3" placeholder="058 616 0270" readonly>
+										<input type="text" class="form-control" id="inputPhone"
+											placeholder="058 616 0270" readonly
+											value="<c:out value="${student.getUser().getUserDetail().getPhone()}"></c:out>">
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label for="inputPassword3" class="col-sm-2 form-control-label">Technologies</label>
-									<div class="col-sm-10">
-										<button class="btn btn-dark">Java</button>
-										<button class="btn btn-dark">Mysql</button>
+									<div id="tech-place" class="col-sm-10">
+
+										<c:forEach items="${student.getStechnologies().split('-') }"
+											var="e">
+											<button class="btn btn-dark">
+												<c:out value="${e}"></c:out>
+											</button>
+										</c:forEach>
+
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="inputPassword3" class="col-sm-2 form-control-label">Description</label>
+									<label for="inputDescription"
+										class="col-sm-2 form-control-label">Description</label>
 									<div class="col-sm-10">
-										<textarea class="form-control" id="inputPassword3" rows="5"
-											readonly>I have joined a project 6 months ago
+										<textarea class="form-control" id="inputDescription" rows="5"
+											readonly><c:out
+												value="${student.getSdesription()}"></c:out>
 
 								</textarea>
 									</div>
 								</div>
-
 							</form>
 						</div>
 						<div class="left-footer"></div>
@@ -203,8 +220,8 @@
 
 
 
-
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<script src="<c:url value="/resource/script/sUpdateInfo.js" />"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous"></script>
@@ -216,5 +233,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script src="<c:url value="/resource/script/sUpdateInfo.js" />"></script>
 </body>
 </html>
