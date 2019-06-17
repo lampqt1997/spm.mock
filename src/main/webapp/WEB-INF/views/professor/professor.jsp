@@ -1,23 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<jsp:include page="/WEB-INF/views/common/include.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SPM - Create Group</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-	crossorigin="anonymous">
+<title>SPM - </title>
 </head>
 <body class="bg-light h-100">
-	
+	<input type="hidden" value="<c:out value="${userId }"></c:out>" id="userId" />
+	<input type="hidden" value="<c:out value="${user }"></c:out>" id="user" />
 	<div class="header border-bottom">
 		<nav class="navbar navbar-expand-lg navbar-light bg-white">
 			<a class="navbar-brand" href="home.html">SPM</a>
@@ -30,88 +23,72 @@
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
+					<li class="nav-item active"><a class="nav-link" href="/spm.mock/">Trang chủ
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item active"><a class="nav-link text-dark"
+					<!-- <li class="nav-item active"><a class="nav-link text-dark"
 						href="#">Search <span class="sr-only">(current)</span></a></li>
-
+ -->
 				</ul>
-				<button class="btn btn-dark my-2 my-sm-0" type="submit">Hi,
-					Tony</button>
+				<button class="btn btn-dark my-2 my-sm-0" ><c:out value="${user.getEmail() }"></c:out></button>
 
 			</div>
 		</nav>
 	</div>
 	<div class="content container-fluid h-100">
 		<div class="row">
-			<div class="navigation-bar bg-info col-12" style="min-height: 50px">
-				<span>Navigation bar</span>
-			</div>
-			<div class="col-1 h-100 bg-white p-0 border-right"
-				style="min-height: 870px;">
-				<div class="menu ">
-					<div class="menu-row border-bottom pt-2">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
+			<div class="navigation-bar  col-12" style="min-height: 50px">
+				<div class="mt-2">
+					<span class = "h5">
+						<a class="text-white" href="/spm.mock/"> Trang chủ</a>
+					</span>
+					<span class = "text-white mr-2 ml-2 h4">/</span>
+					<span class = "text-secondary h6">
+							Giáo sư
+					</span>
+					<span></span>
 				</div>
 			</div>
+			<div class="col-1 h-100 bg-white p-0 border"
+				style="min-height: 870px;">
+				<div class="menu ">
+					<a href="/spm.mock/handler/pr-view-info" class="text-info">
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-user-edit"></i>
+						</p>
+						<p class="text-center">Xem  thông tin</p>
+
+					</div>
+					</a>
+					
+					<a href="/spm.mock/handler/change-pass" class="text-info">
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-exchange-alt"></i>
+						</p>
+						<p class="text-center">Đổi mật khẩu</p>
+
+					</div>
+					</a>
+					<a href="/spm.mock/logout" class="text-info"> 
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-sign-out-alt"></i>
+						</p>
+						<p class="text-center">Đăng xuất</p>
+
+					</div>
+					</a>
+
+					
+				</div>
+			</div>
+			
 			<div class="col-11">
 				<div class="row mt-5 p-2">
 					<div class="col-1">
-						<a href="view-information.html"
+						<a href="/spm.mock/handler/pr-create-topic"
 							class="text-decoration-none text-info">
 							<div class="card border-danger mb-3 h-50 ">
 
@@ -126,8 +103,7 @@
 
 					</div>
 					<div class="col-2 offset-1">
-						<a href="view-information.html"
-							class="text-decoration-none text-dark">
+						
 							<div class="card border-dark mb-3 h-100 ">
 								<div class="card-body text-dark h-100">
 									<p class="">
@@ -152,7 +128,7 @@
 
 								</div>
 							</div>
-						</a>
+					
 
 					</div>
 
@@ -171,7 +147,7 @@
 
 									</h2>
 								</div>
-								<div id="collapseThree" class="collapse"
+								<div id="collapseThree" 
 									aria-labelledby="headingThree" data-parent="#accordionExample">
 									<div class="card-body">
 										<table class="table table-inverse">
@@ -185,28 +161,37 @@
 												</tr>
 											</thead>
 											<tbody>
-											<%
-											int j = 1;
-											%>
+											<c:choose>
+												<c:when test="${groups.size() == 0}">
+													<p class="text-danger">Hiện chưa có nhóm nào đăng ký bạn!</p>
+													<p class="text-secondary font-italic">Note: Có thể nhóm sinh viên đăng ký bạn và một giáo sư khác, và anh ta đã khóa nhóm sinh viên đó, hoặc nhóm sinh viên đã nằm trong danh sách hướng dẫn của bạn!</p>
+												</c:when>
+												<c:otherwise>
+												<%
+												int j = 1;
+												%>
 												<c:forEach items="${groups }" var="g">
 												<tr>
 													<td>
 													<%=j++ %>
 													</td>
-													<td><a href='<c:out value="${g.id }"></c:out>' class="btn btn-link text-info">
+													<td><a href='/spm.mock/handler/pr-view-group/<c:out value="${g.id }"></c:out>' class="btn btn-link text-info">
 															<c:out value="${ g.getLeader()}"></c:out>
 														</a>
 													</td>
 													<td>
 														<c:out value="${g.getGrade() }"></c:out>
 													</td>
-													<td><a href="" class="btn text-success" title="Đồng ý">
+													<td><a  class="btn text-success register-agree" title="Đồng ý" value="<c:out value="${g.id}"></c:out>">
 															<i class="fa fa-check"></i>
-													</a> <a href="" class="btn text-danger" title="Từ chối"> <i
+													</a> <a class="btn text-danger register-reject" title="Từ chối" value="<c:out value="${g.id}"></c:out>"> <i
 															class="fa fa-times"></i>
 													</a></td>
 												</tr>
 												</c:forEach>
+												</c:otherwise>
+											</c:choose>
+											
 											</tbody>
 										</table>
 
@@ -229,7 +214,7 @@
 
 									</h2>
 								</div>
-								<div id="collapseThree" class="collapse"
+								<div id="collapseThree" 
 									aria-labelledby="headingThree" data-parent="#accordionExample">
 									<div class="card-body">
 										<table class="table table-inverse">
@@ -251,7 +236,7 @@
 													<td>
 													<%=i++ %>
 													</td>
-													<td><a href='<c:out value="${g2.id }"></c:out>' class="btn btn-link text-info">
+													<td><a href='/spm.mock/handler/pr-view-group/<c:out value="${g2.getId() }"></c:out>' class="btn btn-link text-info">
 															<c:out value="${ g2.getLeader()}"></c:out>
 														</a>
 													</td>
@@ -283,20 +268,8 @@
 	</div>
 	<div class="footer"></div>
 
-
-
-
-
-	<script src="https://code.jquery.com/jquery-3.3.1.js"
-		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
+	
+	<script src="<c:url value="/resource/script/get-userid.js" />"></script>
+	<script src="<c:url value="/resource/script/professor.js" />"></script>
 </body>
 </html>

@@ -54,40 +54,41 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<div class="col-12">
-								<h3 class=" modal-title text-dark text-center">Login</h3>
+								<h3 class=" modal-title text-dark text-center">Đăng nhập</h3>
 							</div>
 
 						</div>
 						<div class="modal-body">
-							<form>
+							<form method="post" action="/spm.mock/login">
 								<div class="form-group">
 									<div class="d-flex align-items-center small">
 										<i class="fa fa-user fa-fw text-muted position-absolute pl-3"></i>
-										<input id="username" type="text" class="form-control py-4"
-											placeholder="Email" style="padding-left: 38px;" />
+										<input id="username" name="username" type="text" class="form-control py-4"
+											placeholder="Email hoặc tài khoản" style="padding-left: 38px;" />
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="d-flex align-items-center small">
 										<i class="fa fa-key fa-fw text-muted position-absolute pl-3"></i>
-										<input id="password" type="password" class="form-control py-4"
-											placeholder="Password" style="padding-left: 38px;" />
+										<input id="password" type="password" name="pass" class="form-control py-4"
+											placeholder="Mật khẩu" style="padding-left: 38px;" />
 									</div>
-									<span id="checkLogin" class="text-danger"></span>		
+									<span id="checkLogin" class="text-danger"><c:out value="${err }"></c:out></span>		
 								</div>
 								<div class="form-group">
-									<a href="register.html"
+									<!-- <a href="register.html"
 										class="text-info text-block float-left pl-1">Create new
-										account</a> <a href=""
+										account</a> --> 
+										<!-- <a href=""
 										class="text-info text-block float-right pr-1	">Forget your
-										password?</a>
+										password?</a> -->
 								</div>
-							</form>
+							
 						</div>
 						<div class="modal-footer">
-
-							<a  id="btn-login" class="btn btn-dark btn-block">Login</a>
+							<button type="submit"  id="btn-login" class="btn btn-dark btn-block">Đăng nhập</button>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -108,9 +109,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-	<script src="sweetalert2.all.min.js"></script>
-	<script src="<c:url value="/resource/script/test.js" />"></script>
-	<script src="<c:url value="/resource/script/login.js" />"></script>
+	<!-- <script src="sweetalert2.all.min.js"></script> -->
 	
 </body>
 </html>

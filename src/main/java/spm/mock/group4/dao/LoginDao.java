@@ -27,20 +27,12 @@ public class LoginDao implements ILogin {
 			String sql = "from users where username='" + username + "' and pass='" + password_en + "'";
 			System.out.println(sql);
 			User user = (User) session.createQuery(sql).getSingleResult();
-//			System.out.println(user.getPass());
-//			System.out.println(pass);
-//			System.out.println(user.getEmail());
-//			System.out.println(email);
 			if (user != null) {
 				if (user.getUsername().equals(username) && user.getPass().equals(password_en)) {
 					jsonObject = new JSONObject();
 					jsonObject.put("loginCheck", 1);
 					jsonObject.put("userid", user.getId());
 					jsonObject.put("role", user.getRole_id());
-					System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
-				//	jsonObject.put("password", user.getPass());					
-				//	UserDetail user_detail = (UserDetail) session.get(UserDetail.class, user.getId());
-				//	jsonObject.put("name", user_detail.getLast_name());
 				} else {
 					jsonObject = new JSONObject();
 					System.out.println("e1");
@@ -64,12 +56,20 @@ public class LoginDao implements ILogin {
 		Student st = session.get(Student.class, userId);
 		if (st!=null) {
 			if (st.getId_group() != 9999) {
-				return "/student/student-have-group";
+				return st.getId_group()+"";
 			}
 		}
 		
-		return "/student/student-no-group";
+		return "9999";
 		
 	}
 
+	@Override
+	public User getUserById(int id) {
+		return sessionFactory.getCurrentSession().get(User.class, id);
+	}
+	@Override
+	public UserDetail getUserDetailById(int id) {
+		return sessionFactory.getCurrentSession().get(UserDetail.class, id);
+	}
 }

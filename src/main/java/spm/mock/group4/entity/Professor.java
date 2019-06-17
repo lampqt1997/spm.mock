@@ -27,16 +27,20 @@ public class Professor {
 	private String group_register;
 	
 	@Autowired
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", referencedColumnName = "id",nullable = true)
 	private User user;
 	
 	@Autowired
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", referencedColumnName = "id",nullable = true)
 	private Topic topic;
 	
-	
+	public void reject(int id_group) {
+		String gr = this.group_register;
+		String[] arrGr = gr.split("-");
+		
+	}
 	
 	public Professor() {
 		super();

@@ -3,11 +3,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="spm.mock.group4.entity.Student"%>
-
+<jsp:include page="/WEB-INF/views/common/include.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
-<title>SPM - Create Group</title>
+<title>SPM </title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -31,15 +31,15 @@
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
+					<li class="nav-item active"><a class="nav-link" href="/spm.mock/">Trang chủ
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item active"><a class="nav-link text-dark"
+					<!-- <li class="nav-item active"><a class="nav-link text-dark"
 						href="#">Search <span class="sr-only">(current)</span></a></li>
-
+ -->
 				</ul>
 				<button class="btn btn-dark my-2 my-sm-0" type="submit">
-					Hi,
+				
 					<c:out value="${student.getSname()}"></c:out>
 				</button>
 
@@ -48,69 +48,65 @@
 	</div>
 	<div class="content container-fluid h-100">
 		<div class="row">
-			<div class="navigation-bar bg-info col-12" style="min-height: 50px">
-				<span>Navigation bar</span>
-			</div>
-			<div class="col-1 h-100 bg-white p-0 border-right"
-				style="min-height: 870px;">
-				<div class="menu ">
-					<div class="menu-row border-bottom pt-2">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
-
-					<div class="menu-row border-bottom">
-						<p class="text-center mb-0 mt-2">
-							<i class="fa fa-plus"></i>
-						</p>
-						<p class="text-center">Menu item</p>
-
-					</div>
+			<div class="navigation-bar  col-12" style="min-height: 50px">
+				<div class="mt-2">
+					<span class = "h5">
+						<a class="text-white" href="/spm.mock/"> Trang chủ</a>
+					</span>
+					<span class = "text-white mr-2 ml-2 h4">/</span>
+					<span class = "text-secondary h6">
+							Sinh viên
+					</span>
+					<span class = "text-white mr-2 ml-2 h4">/</span>
+					<span class = "text-secondary h6">
+							Xem thông tin
+					</span>
 				</div>
 			</div>
+			<div class="col-1 h-100 bg-white p-0 border"
+				style="min-height: 870px;">
+				<div class="menu ">
+					<a href="/spm.mock/handler/st-view-info/<c:out value="${user.getId()}"></c:out>" class="text-info">
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-user-edit"></i>
+						</p>
+						<p class="text-center">Xem  thông tin</p>
+
+					</div>
+					</a>
+					<a href="/spm.mock/handler/st-view-list-grade" class="text-info">
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-plus"></i>
+						</p>
+						<p class="text-center">Xem điểm</p>
+
+					</div>
+					</a>
+					<a href="/spm.mock/handler/change-pass" class="text-info">
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-exchange-alt"></i>
+						</p>
+						<p class="text-center">Đổi mật khẩu</p>
+
+					</div>
+					</a>
+					<a href="/spm.mock/logout" class="text-info"> 
+					<div class="menu-row border-bottom pt-3">
+						<p class="text-center mb-0 mt-2">
+							<i class="fa fa-sign-out-alt"></i>
+						</p>
+						<p class="text-center">Đăng xuất</p>
+
+					</div>
+					</a>
+
+					
+				</div>
+			</div>
+			
 			<div class="col-11">
 				<div class="row mt-5 p-2">
 					<div class="col-8  rounded border-top ">
@@ -146,8 +142,8 @@
 									</div>
 								</div>
 								<div class="form-group row ">
-									<label for="inputEmail3" class="col-sm-2 form-control-label">Student
-										code</label>
+									<label for="inputEmail3" class="col-sm-2 form-control-label">Mã sinh viên
+										</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="inputstcode3"
 											readonly
@@ -160,11 +156,13 @@
 										<input type="email" class="form-control" id="inputEmail"
 											placeholder="ussera@gmail.com" readonly
 											value="<c:out value="${student.getUser().getUserDetail().getEmail()}"></c:out>">
+										<span id="emailError" class="text-danger"></span>
 									</div>
+									
 								</div>
 								<div id="password-place" class="form-group row"></div>
 								<div class="form-group row">
-									<label for="inputAddress" class="col-sm-2 form-control-label">Address</label>
+									<label for="inputAddress" class="col-sm-2 form-control-label">Địa chỉ</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="inputAddress"
 											placeholder="Linh Trung, Thu Duc, Ho Chi Minh" readonly
@@ -172,16 +170,18 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="inputPhone" class="col-sm-2 form-control-label">Phone</label>
+									<label for="inputPhone" class="col-sm-2 form-control-label">Số điện thoại</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="inputPhone"
 											placeholder="058 616 0270" readonly
 											value="<c:out value="${student.getUser().getUserDetail().getPhone()}"></c:out>">
+											<span id="phoneError" class="text-danger"></span>
 									</div>
+									
 								</div>
 
 								<div class="form-group row">
-									<label for="inputPassword3" class="col-sm-2 form-control-label">Technologies</label>
+									<label for="inputPassword3" class="col-sm-2 form-control-label">Công nghệ</label>
 									<div id="tech-place" class="col-sm-10">
 
 										<c:forEach items="${student.getStechnologies().split('-') }"
@@ -195,7 +195,7 @@
 								</div>
 								<div class="form-group row">
 									<label for="inputDescription"
-										class="col-sm-2 form-control-label">Description</label>
+										class="col-sm-2 form-control-label">Mô tả</label>
 									<div class="col-sm-10">
 										<textarea class="form-control" id="inputDescription" rows="5"
 											readonly><c:out
@@ -218,21 +218,6 @@
 	</div>
 	<div class="footer"></div>
 
-
-
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-	<script src="<c:url value="/resource/script/sUpdateInfo.js" />"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.js"
-		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
-	<script src="<c:url value="/resource/script/sUpdateInfo.js" />"></script>
+	<script src="<c:url value="/resource/script/updateinfo.js" />"></script>
 </body>
 </html>

@@ -197,12 +197,8 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ",sname=" + sname + ",sdescription=" + sdescription + ",stechnologies="
-				+ stechnologies + ",student_code=" + student_code + ",id_group=" + id_group + ",user=" + user
-				+ ",grade=" + grade + ",groupStudent=" + groupStudent + "]\n";
+				+ stechnologies + ",student_code=" + student_code + ",id_group=" + id_group + "]\n";
 	}
-
-
-
 
 
 

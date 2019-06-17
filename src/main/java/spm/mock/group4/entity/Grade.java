@@ -19,17 +19,39 @@ public class Grade {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="id_student", updatable=false, insertable=false)
+	@Column(name="id_student")
 	private int id_student;
 	
 	private float grade;
 	
-	@OneToOne
-	@JoinColumn(name = "id_student")
+	private int id_test;
+		
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_student",updatable=false, insertable=false)
 	private Student student;
 	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_test",updatable=false, insertable=false)
+	private Test test;
 	
 	
+	public Grade(int id_student, float grade, int id_test, Student student, Test test) {
+		super();
+		this.id_student = id_student;
+		this.grade = grade;
+		this.id_test = id_test;
+		this.student = student;
+		this.test = test;
+	}
+	public Grade(int id, int id_student, float grade, int id_test, Student student, Test test) {
+		super();
+		this.id = id;
+		this.id_student = id_student;
+		this.grade = grade;
+		this.id_test = id_test;
+		this.student = student;
+		this.test = test;
+	}
 	public Grade(int id, int id_student, float grade, Student student) {
 		super();
 		this.id = id;
@@ -77,10 +99,22 @@ public class Grade {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	
+	public int getId_test() {
+		return id_test;
+	}
+	public void setId_test(int id_test) {
+		this.id_test = id_test;
+	}
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
+	}
 	@Override
 	public String toString() {
-		return "Grade [id=" + id + ", id_student=" + id_student + ", grade=" + grade + "]\n";
+		return "Grade [id=" + id + ",id_student=" + id_student + ",grade=" + grade + ",id_test=" + id_test + "]\n";
 	}
-	
 	
 }

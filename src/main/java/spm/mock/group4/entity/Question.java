@@ -17,6 +17,7 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private int id_test;
 	private String question;
 	private String option1;
@@ -26,27 +27,6 @@ public class Question {
 	private int answerTrue;
 	
 	
-	@Autowired
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", referencedColumnName = "id_question",nullable = true)
-	private Answer answer;
-
-
-	public Question(int id, int id_test, String question, String option1, String option2, String option3,
-			String option4, int answerTrue, Answer answer) {
-		super();
-		this.id = id;
-		this.id_test = id_test;
-		this.question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.answerTrue = answerTrue;
-		this.answer = answer;
-	}
-
-
 	public Question(int id_test, String question, String option1, String option2, String option3, String option4,
 			int answerTrue) {
 		super();
@@ -59,6 +39,21 @@ public class Question {
 		this.answerTrue = answerTrue;
 	}
 
+
+	public Question(int id, int id_test, String question, String option1, String option2, String option3,
+			String option4, int answerTrue) {
+		super();
+		this.id = id;
+		this.id_test = id_test;
+		this.question = question;
+		this.option1 = option1;
+		this.option2 = option2;
+		this.option3 = option3;
+		this.option4 = option4;
+		this.answerTrue = answerTrue;
+	
+	}
+	
 
 	public Question() {
 		super();
@@ -145,22 +140,15 @@ public class Question {
 	}
 
 
-	public Answer getAnswer() {
-		return answer;
-	}
-
-
-	public void setAnswer(Answer answer) {
-		this.answer = answer;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", id_test=" + id_test + ", question=" + question + ", option1="
-				+ option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
-				+ ", answerTrue=" + answerTrue + ", answer=" + answer + "]";
+		return "Question [id=" + id + ",id_test=" + id_test + ",question=" + question + ",option1=" + option1
+				+ ",option2=" + option2 + ",option3=" + option3 + ",option4=" + option4 + ",answerTrue=" + answerTrue
+				+ "]\n";
 	}
- 
+
+
+
 	
 }

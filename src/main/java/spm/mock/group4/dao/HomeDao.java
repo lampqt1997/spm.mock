@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spm.mock.group4.entity.Answer;
 import spm.mock.group4.entity.Roles;
 
 import spm.mock.group4.implement.IHome;
@@ -19,8 +20,9 @@ public class HomeDao implements IHome {
 	SessionFactory sessionFactory;//session factory để mở kết nối đến dtbase
 	
 	@Override
-	public String home() {
-		return null;
+	public String home() {		
+		
+		return "home";
 		
 		
 	

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import spm.mock.group4.dao.LoginDao;
+import spm.mock.group4.entity.User;
+import spm.mock.group4.entity.UserDetail;
 import spm.mock.group4.implement.ILogin;
 
 @Service
@@ -22,4 +24,18 @@ public class LoginService implements ILogin {
 	public String login(int userId, int roleId) {
 		return loginDAO.login(userId, roleId);
 	}
+
+	@Override
+	@Transactional
+	public User getUserById(int id) {
+		return loginDAO.getUserById(id);
+	}
+
+	@Override
+	@Transactional
+	public UserDetail getUserDetailById(int id) {
+		return loginDAO.getUserDetailById(id);
+	}
+	
+	
 }

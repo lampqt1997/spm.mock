@@ -26,7 +26,7 @@ public class Test {
 	
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_test", referencedColumnName = "id",nullable = true)
 	private List<Question> questions;
 

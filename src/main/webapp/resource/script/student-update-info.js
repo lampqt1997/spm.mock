@@ -1,6 +1,6 @@
 $(document).ready(function() {	
-	localStorage.setItem('userid',3);
-	var id=localStorage.getItem('userid');
+	localStorage.setItem('userId',3);
+	var id=localStorage.getItem('userId');
 	$("#btn-edit").click(function() {
 		$("#btn-edit").remove();
 		var elm= 
@@ -22,9 +22,9 @@ $(document).ready(function() {
 	
 	var elm2= '<div class="col-sm-5" style="float: right; margin-right:-2%">'+
 				'<div class="input-group mb-3">'+
-					'<input id="inputTechnologies" type="text" class="form-control" placeholder="Nh?p c�ng ngh?">'+
+					'<input id="inputTechnologies" type="text" class="form-control" placeholder="Nhập công nghệ">'+
 						'<div class="input-group-append">'+
-							'<a id="btn-add-tech" class="btn btn-outline-dark"> Add </a>'+
+							'<a href="" id="btn-add-tech" class="btn btn-outline-dark"> Add </a>'+
 						'</div>'+
 				'</div>'+
 			   '</div>';
@@ -45,13 +45,15 @@ $(document).ready(function() {
 	document.getElementById('inputDescription').removeAttribute('readonly');
 
 	$('#btn-add-tech').click(function(event) {
+		console.log()
 		var tech=$('#inputTechnologies').val();
+		var id=localStorage.getItem('userId');
 		$.ajax({
 			url: 'http://localhost:8080/spm.mock/handler/st-update-info/tech/'+id+'/'+tech,
 			type: 'GET',
-			dateType: 'json',
 		})
-		.done(function() {
+		.done(function(value) {
+			console.log(value)
 			var elm4='<button class="btn btn-dark">'+tech+
 			'</button>';
 			$('#tech-place').append(elm4)
@@ -67,16 +69,26 @@ $(document).ready(function() {
 		
 	
 	$('#btn-save').click(function(event) {
+		console.log('save');
 		var email=$('#inputEmail').val();
 		var address=$('#inputAddress').val();
 		var phone=$('#inputPhone').val();
 		var description=$('#inputDescription').val();
+		var id=localStorage.getItem('userId');
+		console.log(email);
+		console.log(address);
+		console.log(phone);
+		console.log(description);
+		console.log(id);
+		alert('xxxxxxxxxxxxxxxxxxxx')
 		$.ajax({
 			url: 'http://localhost:8080/spm.mock/handler/st-update-info/'+id+'/'+email+'/'+address+'/'+phone+'/'+description,
 			type: 'GET',
-			dateType: 'json',
+
 		})
 		.done(function(value) {
+			console.log(value)
+			alert(value)
 			window.location.reload(true);
 		})
 			
